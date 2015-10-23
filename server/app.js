@@ -17,6 +17,9 @@ app.use(express.static(__dirname + "/../webapp"));
 
 app.get("/code", function(req, res){
     console.log("/code ", querystring.parse(req.url));
+    var auth_code = getCodeFromUrl(req.url);
+
+    console.log("auth_code", auth_code);
 
     // request.post(auth_token_url + "?...=...", function(response){
     //     console.log("")
@@ -25,8 +28,10 @@ app.get("/code", function(req, res){
     res.send("the code...");
 });
 
-app.get("/disconnect", function(req, res){
-
-});
+var getCodeFromUrl(url){
+    var qs = querystring.parse(url);
+    var key = Object.keys(qs);
+    return qs[key[0]];
+}
 
 app.listen(app.get('port'));
