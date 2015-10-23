@@ -32,7 +32,7 @@ app.get("/code", function(req, res){
             console.log(":(");
             res.send(":(");
         }else{
-            console.log(body);
+            console.log(r);
             res.send(":)");
         }
     });
