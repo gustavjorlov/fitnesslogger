@@ -21,9 +21,18 @@ app.get("/code", function(req, res){
 
     console.log("auth_code", auth_code);
 
-    // request.post(auth_token_url + "?...=...", function(response){
-    //     console.log("")
-    // });
+    request.post({
+        url: auth_token_url,
+        oauth: {
+            grant_type: 'authorization_code',
+            code: auth_code,
+            client_id: CLIENT_ID,
+            client_secret: CLIENT_SECRET,
+            redirect_uri: "https://fitnesslogger.herokuapp.com?yes=no"
+        }
+    }, function(e, r, response){
+        console.log(e, r, response);
+    });
 
     res.send("the code...");
 });
