@@ -1,15 +1,16 @@
 {
-    "name": "magicmirrorfitnesslogger",
-    "version": "0.0.1",
-    "dependencies": {
-        "express": "*",
-        "morgan": "1.6.1"
-    },
-    "engines": {
-		"node": "0.12.2",
-		"npm": "2.7.4"
-	},
-	"scripts": {
-		"start": "node server/app.js"
-	}
+  "name": "magicmirrorfitnesslogger",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "*",
+    "morgan": "1.6.1",
+    "request": "^2.65.0"
+  },
+  "engines": {
+    "node": "0.12.2",
+    "npm": "2.7.4"
+  },
+  "scripts": {
+    "start": "node server/app.js"
+  }
 }
