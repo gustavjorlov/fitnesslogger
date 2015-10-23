@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var request = require('request');
+var querystring = require('querystring');
 
 var auth_url = "https://runkeeper.com/apps/authorize";
 var auth_token_url = "https://runkeeper.com/apps/token";
@@ -15,7 +16,7 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + "/../webapp"));
 
 app.get("/code", function(req, res){
-    console.log("/code ", JSON.stringify(req.params));
+    console.log("/code ", querystring.parse(req.url));
 
     // request.post(auth_token_url + "?...=...", function(response){
     //     console.log("")
