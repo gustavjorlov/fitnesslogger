@@ -9,11 +9,16 @@ var deauth_url = "https://runkeeper.com/apps/de-authorize";
 
 var CLIENT_ID = "b101f00fa9f142a2a17d73bdd84499e6";
 var CLIENT_SECRET = "9f6521ab4dc94ec9b11aedf66bab6809";
+var ACCESS_TOKEN = "";
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
 app.use(morgan('dev'));
 app.use(express.static(__dirname + "/../webapp"));
+
+app.get("/home", function(req, res){
+    res.send("access_token: " + ACCESS_TOKEN);
+});
 
 app.get("/code", function(req, res){
     var auth_code = getCodeFromUrl(req.url);
@@ -34,9 +39,9 @@ app.get("/code", function(req, res){
         }else{
             console.log(body);
             res.send(":)");
+            ACCESS_TOKEN = body.access_token;
         }
     });
-    // res.send("the code...");
 });
 
 function getCodeFromUrl(url){
