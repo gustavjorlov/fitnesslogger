@@ -28,7 +28,7 @@ app.get("/code", function(req, res){
     res.send("the code...");
 });
 
-var getCodeFromUrl(url){
+function getCodeFromUrl(url){
     var qs = querystring.parse(url);
     var key = Object.keys(qs);
     return qs[key[0]];
