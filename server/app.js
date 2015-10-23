@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + "/../webapp"));
 
 app.get("/code", function(req, res){
-    console.log("/code " + req.params);
+    console.log("/code " + req.params.code);
 
     // request.post(auth_token_url + "?...=...", function(response){
     //     console.log("")
