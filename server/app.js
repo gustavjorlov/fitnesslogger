@@ -16,15 +16,12 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + "/../webapp"));
 
 app.get("/code", function(req, res){
-    console.log("/code ", querystring.parse(req.url));
     var auth_code = getCodeFromUrl(req.url);
-
-    console.log("auth_code", auth_code);
 
     request.post({
         url: auth_token_url,
         oauth: {
-            grant_type: 'authorization_code',
+            grant_type: "authorization_code",
             code: auth_code,
             client_id: CLIENT_ID,
             client_secret: CLIENT_SECRET,
