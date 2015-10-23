@@ -25,7 +25,7 @@ app.get("/code", function(req, res){
             code: auth_code,
             client_id: CLIENT_ID,
             client_secret: CLIENT_SECRET,
-            redirect_uri: "https://fitnesslogger.herokuapp.com?yes=no"
+            redirect_uri: "https://fitnesslogger.herokuapp.com/code"
         }
     }, function(e, r, body){
         if(e){
