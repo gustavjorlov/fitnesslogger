@@ -30,10 +30,15 @@ app.get("/code", function(req, res){
             client_secret: CLIENT_SECRET,
             redirect_uri: "https://fitnesslogger.herokuapp.com?yes=no"
         }
-    }, function(e, r, response){
-        console.log(e, r, response);
+    }, function(e, r, body){
+        id(e){
+            console.log(":(");
+            res.send(":(");
+        }else{
+            console.log(body);
+            res.send(":");
+        }
     });
-
     res.send("the code...");
 });
 
