@@ -36,7 +36,7 @@ app.get("/code", function(req, res){
             res.send(":");
         }
     });
-    res.send("the code...");
+    // res.send("the code...");
 });
 
 function getCodeFromUrl(url){
