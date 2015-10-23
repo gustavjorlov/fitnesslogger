@@ -39,7 +39,7 @@ app.get("/code", function(req, res){
         }else{
             console.log(body);
             res.send(":)");
-            ACCESS_TOKEN = body.access_token;
+            ACCESS_TOKEN = JSON.parse(body).access_token;
         }
     });
 });
