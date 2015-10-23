@@ -20,8 +20,8 @@ app.get("/code", function(req, res){
 
     request.post({
         url: auth_token_url,
-        oauth: {
-            grant_type: "authorization_code",
+        form: {
+            grant_type: 'authorization_code',
             code: auth_code,
             client_id: CLIENT_ID,
             client_secret: CLIENT_SECRET,
@@ -33,7 +33,7 @@ app.get("/code", function(req, res){
             res.send(":(");
         }else{
             console.log(body);
-            res.send(":");
+            res.send(":)");
         }
     });
     // res.send("the code...");
