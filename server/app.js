@@ -31,7 +31,7 @@ app.get("/code", function(req, res){
             redirect_uri: "https://fitnesslogger.herokuapp.com?yes=no"
         }
     }, function(e, r, body){
-        id(e){
+        if(e){
             console.log(":(");
             res.send(":(");
         }else{
