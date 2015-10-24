@@ -2,6 +2,7 @@
   "name": "magicmirrorfitnesslogger",
   "version": "0.0.1",
   "dependencies": {
+    "ejs": "^2.3.4",
     "express": "*",
     "morgan": "1.6.1",
     "request": "^2.65.0"
