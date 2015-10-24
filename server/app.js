@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 
 app.get("/", function(req, res){
     console.log("/ found..")
-    res.render("../webapp/index.html");
+    res.render("../webapp/index");
 });
 
 app.use(express.static(__dirname + "/../webapp"));
