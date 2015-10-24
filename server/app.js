@@ -6,6 +6,7 @@ var querystring = require('querystring');
 var auth_url = "https://runkeeper.com/apps/authorize";
 var auth_token_url = "https://runkeeper.com/apps/token";
 var deauth_url = "https://runkeeper.com/apps/de-authorize";
+var base_api_url = "https://api.runkeeper.com/user";
 
 var CLIENT_ID = "b101f00fa9f142a2a17d73bdd84499e6";
 var CLIENT_SECRET = "9f6521ab4dc94ec9b11aedf66bab6809";
@@ -18,6 +19,22 @@ app.use(express.static(__dirname + "/../webapp"));
 
 app.get("/home", function(req, res){
     res.send("access_token: " + ACCESS_TOKEN);
+});
+
+app.get("/fitness", function(req, res){
+    // authorization:Bearer ae40cee65d3e4394a5cf5abe3636ea0b
+    // accept:application/vnd.com.runkeeper.User+json
+    var options = {
+        url: base_api_url + "/fitnessActivities",
+        headers: {
+            "authorization": "Bearer " + ACCESS_TOKEN,
+            "accept": "application/vnd.com.runkeeper.FitnessActivity+json"
+        }
+    }
+    request.get(options, function(err, response, body){
+        console.log(err, body);
+        res.send(body);
+    });
 });
 
 app.get("/code", function(req, res){
