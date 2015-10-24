@@ -21,46 +21,22 @@ app.get("/home", function(req, res){
     res.send("access_token: " + ACCESS_TOKEN);
 });
 
-app.get("/user", function(req, res){
-    var options = {
-        url: base_api_url + "/user",
-        headers: {
-            "authorization": "Bearer " + ACCESS_TOKEN,
-            "accept": "application/vnd.com.runkeeper.User+json"
-        }
-    };
-    request.get(options, function(err, response, body){
-        console.log(err, body);
-        res.send(body);
-    });
-});
-
-app.get("/fitness", function(req, res){
-    var options = {
-        url: base_api_url + "/fitnessActivities",
-        headers: {
-            "authorization": "Bearer " + ACCESS_TOKEN,
-            "accept": "application/vnd.com.runkeeper.FitnessActivityFeed+json"
-        }
-    };
-    request.get(options, function(err, response, body){
-        console.log(err, body);
-        res.send(body);
-    });
-});
 
 app.get("/data/:type", function(req, res){
+    getData(req.params.type, function(err, response, body){
+        res.send(body);
+    });
+});
+
+var getData = function(dataKey, callback){
     var options = {
-        url: base_api_url + "/" + req.params.type,
+        url: base_api_url + "/" + dataKey,
         headers: {
             "authorization": "Bearer " + ACCESS_TOKEN
         }
     };
-    request.get(options, function(err, response, body){
-        console.log(err, body);
-        res.send(body);
-    });
-});
+    request.get(options, callback);
+}
 
 app.get("/code", function(req, res){
     var auth_code = getCodeFromUrl(req.url);
@@ -79,8 +55,7 @@ app.get("/code", function(req, res){
             console.log(":(");
             res.send(":(");
         }else{
-            console.log(body);
-            res.send(":)");
+            res.redirect("/");
             ACCESS_TOKEN = JSON.parse(body).access_token;
         }
     });
