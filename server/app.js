@@ -14,12 +14,14 @@ var ACCESS_TOKEN = "";
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
+app.set('view engine', 'html');
+app.set('views', '../webapp');
 app.use(morgan('dev'));
 
 
 app.get("/", function(req, res){
     console.log("/ found..")
-    res.render("../webapp/index");
+    res.render("index");
 });
 
 app.use(express.static(__dirname + "/../webapp"));
