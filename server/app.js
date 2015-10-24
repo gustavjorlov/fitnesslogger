@@ -35,14 +35,12 @@ app.get("/user", function(req, res){
     });
 });
 
-app.get("/data/:param", function(req, res){
-    // authorization:Bearer ae40cee65d3e4394a5cf5abe3636ea0b
-    // accept:application/vnd.com.runkeeper.User+json
+app.get("/fitness", function(req, res){
     var options = {
-        url: base_api_url + "/" + req.params.param,
+        url: base_api_url + "/fitnessActivities",
         headers: {
             "authorization": "Bearer " + ACCESS_TOKEN,
-            "accept": "application/vnd.com.runkeeper.FitnessActivity+json"
+            "accept": "application/vnd.com.runkeeper.FitnessActivityFeed+json"
         }
     };
     request.get(options, function(err, response, body){
