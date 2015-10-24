@@ -49,6 +49,19 @@ app.get("/fitness", function(req, res){
     });
 });
 
+app.get("/data/:type", function(req, res){
+    var options = {
+        url: base_api_url + "/" + req.params.type,
+        headers: {
+            "authorization": "Bearer " + ACCESS_TOKEN
+        }
+    };
+    request.get(options, function(err, response, body){
+        console.log(err, body);
+        res.send(body);
+    });
+});
+
 app.get("/code", function(req, res){
     var auth_code = getCodeFromUrl(req.url);
 
