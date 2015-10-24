@@ -15,12 +15,14 @@ var ACCESS_TOKEN = "";
 var app = express();
 app.set('port', (process.env.PORT || 3000));
 app.use(morgan('dev'));
-app.use(express.static(__dirname + "/../webapp"));
+
 
 app.get("/", function(req, res){
-    console.log("/ found..");
+    console.log("/ found..")
     res.render("../webapp/index.html");
 });
+
+app.use(express.static(__dirname + "/../webapp"));
 
 app.get("/home", function(req, res){
     res.send("access_token: " + ACCESS_TOKEN);
