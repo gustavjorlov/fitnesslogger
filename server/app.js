@@ -15,7 +15,7 @@ var ACCESS_TOKEN = "";
 var app = express();
 app.set('port', (process.env.PORT || 3000));
 app.set('view engine', 'ejs');
-app.set('views', '../webapp/');
+app.set('views', __dirname + '/../webapp/');
 app.use(morgan('dev'));
 
 
